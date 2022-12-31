@@ -11,19 +11,35 @@ const Signup = () => {
     const { signup } = useContext(UserContext);
     const navigate = useNavigate();
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const userObj = {
+            username,
+            password,
+            password_confirmation: passwordConfirmation
+        }
+
+        const handleSubmit = () => {
+            console.log("submit")
+        }
+
+    }
+
 
     return (
         <div id='signup'> 
-            <form >
+            <form onSubmit={handleSubmit}>
             <label>Username</label>
-            <input type="text" /><br/>
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/><br/>
             <label>Password</label>
-            <input type="password" /><br/>
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/><br/>
             <label>Password Confirmation</label>
-            <input type="password" /><br/>
+            <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/><br/>
             <button type="submit">Sign up!</button>
         </form>
         <ul>
+            {errorsList}
         </ul>
         </div>
 )

@@ -7,7 +7,7 @@ const Signup = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
-    // const [errorsList, setErrorsList] = useState([]);
+    const [errorsList, setErrorsList] = useState([]);
     const { signup } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -20,10 +20,28 @@ const Signup = () => {
             password_confirmation: passwordConfirmation
         }
 
-        const handleSubmit = () => {
-            console.log("submit")
-        }
-
+        fetch('/signup',{
+            method:'POST',
+            headers:{'Content-Type': 'application/json'},
+            body:JSON.stringify(userObj)
+        })
+        .then(res => res.json())
+        .then(user => {
+            // console.log(json)
+            if(user.errors) {
+                // reset
+                setUsername('')
+                setPassword('')
+                setPasswordConfirmation('')
+                // get the errors
+                // look at issue: unique id 
+                const errorItems = user.errors.map(e => <p key={e.id}>{e}</p>) 
+                setErrorsList(errorItems) 
+            } else {
+                signup(user)
+                navigate('/home')
+            }
+        })
     }
 
 
@@ -39,7 +57,7 @@ const Signup = () => {
             <button type="submit">Sign up!</button>
         </form>
         <ul>
-            {/* {errorsList} */}
+            {errorsList}
         </ul>
         </div>
 )

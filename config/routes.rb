@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :visits
 
     # routes to handle user
-    # post "/signup", to: "users#create" 
+    post "/signup", to: "users#create" 
     get "/me", to: "users#show"
   
   # routes to handle sessions login and logout

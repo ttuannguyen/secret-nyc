@@ -39,7 +39,7 @@ const Signup = () => {
             <button type="submit">Sign up!</button>
         </form>
         <ul>
-            {errorsList}
+            {/* {errorsList} */}
         </ul>
         </div>
 )

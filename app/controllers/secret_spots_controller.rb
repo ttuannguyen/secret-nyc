@@ -1,0 +1,2 @@
+class SecretSpotsController < ApplicationController
+end

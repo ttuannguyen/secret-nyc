@@ -4,7 +4,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: SecretSpot.all
+        user = User.find_by(id: sessions[:user_id])
+        if user 
+            render json: user
+        else
+            render json: { error: "Not authorized" }, status: :unauthorized
+        end
     end
 
     def create

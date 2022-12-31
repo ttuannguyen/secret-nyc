@@ -6,22 +6,23 @@ import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import { UserProvider } from './context/user';
 
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Navbar />
-          <h1>Secret NYC</h1>
-          <p>Discover secret spots in NYC like a true New Yorker!</p>
-        <Routes>
-          <Route exact path="/signup" element={ <Signup /> } />
-          <Route exact path="/login" element={ <Login /> } />
-          <Route exact path="/home" element={ <Home /> } />
-        </Routes>
-      </Router>
-    </div>
+      <UserProvider>
+        <Router>
+          <Navbar />
+            <h1>Secret NYC</h1>
+            <p>Discover secret spots in NYC like a true New Yorker!</p>
+          <Routes>
+            <Route exact path="/signup" element={ <Signup /> } />
+            <Route exact path="/login" element={ <Login /> } />
+            <Route exact path="/home" element={ <Home /> } />
+          </Routes>
+        </Router>
+      </UserProvider>
   );
 }
 

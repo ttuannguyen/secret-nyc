@@ -8,9 +8,39 @@ const UserProvider = ({ children }) => {
     const [secretSpots, setSecretSpots] = useState([]); // all the spots in db
     const [visits, setVisits] = useState([]);
 
+    // useEffect(() => {
+    //     fetch('/me')
+    //     .then(res => res.json())
+    //     .then(json => {
+    //         console.log(json)
+    //         // setUser(json)
+    //         // if (json.error) {
+    //         //     setLoggedIn(false)
+    //         // } else {
+    //         //     setUser(json) 
+    //         //     setLoggedIn(true)
+  
+    //         // }
+    //     })
+    // }, [])
+
+    const login = () => {
+        
+    }
+
+    const logout = () => {
+        
+    }
+
+    const signup = () => {
+
+    }
+
+
+
 
     return (
-        <UserContext.Provider>
+        <UserContext.Provider value={{user, loggedIn, secretSpots, visits}}>
             {children}
         </UserContext.Provider>
     )
